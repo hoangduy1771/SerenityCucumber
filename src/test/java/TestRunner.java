@@ -5,7 +5,7 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
         features="src/main/java/features",
-        glue={"stepdefinitions"},
+        glue={"stepdefinitions", "cucumber.hook"},
         plugin = {"pretty"},
         tags = "@test",
         monochrome = true

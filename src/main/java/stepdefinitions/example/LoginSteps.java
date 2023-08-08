@@ -1,31 +1,28 @@
-package stepdefinitions;
+package stepdefinitions.example;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import pages.LoginPage;
+import pages.example.LoginPage;
 
 import java.time.Duration;
-import java.util.Properties;
 
 public class LoginSteps {
-    static final Logger logger = LogManager.getLogger(LoginSteps.class);
     WebDriver driver;
     LoginPage loginPage;
     @Before
     public void initDriver() {
         String browserType = System.getProperty("browserType");
+        if (browserType == null) {
+            browserType = "chrome";
+        }
 
         switch (browserType.toLowerCase()) {
             case "chrome":
@@ -55,21 +52,18 @@ public class LoginSteps {
         loginPage.enterUserName(userName);
         loginPage.enterPassword(passWord);
 
-        logger.info("Step - User enters userName and passWord - success");
     }
     @When("User clicks on {string} button")
     public void clicksOnLoginButton(String buttonName) {
         loginPage = new LoginPage(driver);
         loginPage.clickOnButton(buttonName);
 
-        logger.info("Step - User clicks on login button");
     }
     @Then("User can navigate to the homepage")
     public void userCanNavigateToTheHomepage() {
         loginPage = new LoginPage(driver);
         loginPage.verifyLogOutButtonDisplayed();
 
-        logger.info("Step - User can navigate to the homepage");
     }
 
     @After
