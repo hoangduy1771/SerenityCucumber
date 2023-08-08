@@ -18,7 +18,7 @@ public class TestWithJunit {
     public void doLogin() throws InterruptedException {
         driver.get("https://google.com");
         driver.findElement(By.name("q")).sendKeys("Hello");
-        Thread.sleep(5000);
+        Thread.sleep(2000);
     }
 
 

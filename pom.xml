@@ -16,6 +16,7 @@
         <serenity.version>3.8.1</serenity.version>
         <serenity.maven.version>3.8.1</serenity.maven.version>
         <cucumber.version>7.13.0</cucumber.version>
+        <webdriver.driver>firefox</webdriver.driver>
         <tags></tags>
     </properties>
 
@@ -81,6 +82,9 @@
                     <parallel>classes</parallel>
                     <parallel>methods</parallel>
                     <useUnlimitedThreads>true</useUnlimitedThreads>
+                    <systemPropertyVariables>
+<!--                        <webdriver.driver>${webdriver.driver}</webdriver.driver>-->
+                    </systemPropertyVariables>
                 </configuration>
                 <executions>
                     <execution>
